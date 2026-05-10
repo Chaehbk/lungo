@@ -86,23 +86,44 @@ Suggested internal field names:
 - `is_owner_occupied`
 - `home_environment_description`
 
-## Configurable screening criteria
+## Configurable room profile fields
 
-The app should support configurable screening criteria such as:
+The app should support configurable room fields such as:
 
-- Required occupancy
-- Preferred move-in timeline
-- Preferred lease length
-- Financial qualification range
-- Self-reported credit range
-- Smoking policy
-- Pet policy
-- Application provider
-- Application readiness
-- Lifestyle fit priorities
-- Shared-space expectations
-- Quiet-home expectations
+- Room title
+- Location label
+- Available move-in date
+- Rent
+- Utilities
+- Parking
+- Other fees
+- Private room? yes/no
+- Private bathroom? yes/no
+- Furnished? yes/no
+- Pets allowed? yes/no
+- Smoking allowed? yes/no
+- Owner-occupied home? yes/no
+- Home environment description
 
+Landlords/homeowners should be able to add as many custom other fees as needed.
+
+Suggested internal field names:
+
+- `title`
+- `location_label`
+- `available_move_in_date`
+- `rent`
+- `utilities_fee`
+- `parking`
+- `other_fees`
+- `has_private_room`
+- `has_private_bathroom`
+- `is_furnished`
+- `pets_allowed`
+- `smoking_allowed`
+- `is_owner_occupied`
+- `home_environment_description`
+  
 ## First build target
 
 - Next.js + TypeScript app
