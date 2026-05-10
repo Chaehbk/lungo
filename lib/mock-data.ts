@@ -111,7 +111,7 @@ export const candidates: Candidate[] = [
     cleanlinessHabits: "Moderate — I am tidy but prefer flexible shared-space expectations",
     incomeOrFinancialSupportRange: "Other",
     selfReportedCreditRange: "680–699",
-    smokeOrVape: "No smoking; occasional vaping outside",
+    smokeOrVape: "Occasionally",
     petsOrAnimals: "No pets",
     selfIntro:
       "I need a flexible short-term room while I decide where to live longer term in Orange County.",
