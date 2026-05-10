@@ -87,10 +87,14 @@ export const intakeQuestionSections: IntakeQuestionSection[] = [
       {
         name: "cleanliness_habits",
         label: "Cleanliness habits",
-        type: "textarea",
+        type: "select",
         required: true,
-        rows: 3,
-        placeholder: "How do you usually handle shared spaces?",
+        options: [
+          "Very clean — I clean up right away and prefer organized shared spaces",
+          "Generally clean — I clean up after myself and can follow a shared routine",
+          "Moderate — I am tidy but prefer flexible shared-space expectations",
+          "Prefer to discuss",
+        ],
       },
     ],
   },
