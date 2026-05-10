@@ -25,7 +25,8 @@ export const intakeQuestionSections: IntakeQuestionSection[] = [
         name: "phone",
         label: "Phone",
         type: "tel",
-        placeholder: "Optional",
+        required: true,
+        placeholder: "(555) 555-5555",
       },
       {
         name: "preferred_move_in_date",
@@ -46,7 +47,7 @@ export const intakeQuestionSections: IntakeQuestionSection[] = [
         label: "Desired lease length",
         type: "select",
         required: true,
-        options: ["3–6 months", "6–12 months", "12+ months", "Flexible / not sure yet"],
+        options: ["3 months", "6 months", "9 months", "12 months", "6–12 months", "Flexible", "Other"],
       },
       {
         name: "occupancy_confirmation",
@@ -79,10 +80,15 @@ export const intakeQuestionSections: IntakeQuestionSection[] = [
       {
         name: "typical_home_routine",
         label: "Typical home routine",
-        type: "textarea",
+        type: "select",
         required: true,
-        rows: 3,
-        placeholder: "Share your usual weekday/weekend rhythm.",
+        options: [
+          "Mostly out during the day, light home use",
+          "Hybrid / balanced home use",
+          "Mostly home-based",
+          "I cook often and use shared spaces regularly",
+          "Other",
+        ],
       },
       {
         name: "cleanliness_habits",
@@ -110,14 +116,14 @@ export const intakeQuestionSections: IntakeQuestionSection[] = [
         type: "select",
         required: true,
         hint: "This asks about verifiable ability to pay, not the source of lawful income.",
-        options: ["3x+ monthly rent", "2.5x–3x monthly rent", "Below 2.5x monthly rent", "Verifiable financial support", "Prefer to discuss"],
+        options: ["Under $7,000", "$7,000–$8,999", "$9,000–$10,999", "$11,000–$12,999", "$13,000+", "Other"],
       },
       {
         name: "self_reported_credit_range",
         label: "Self-reported credit range",
         type: "select",
         required: true,
-        options: ["720+", "680–719", "640–679", "Below 640", "Limited or no U.S. credit history", "Prefer to discuss"],
+        options: ["Under 680", "680–699", "700–739", "740+", "Limited or no U.S. credit history"],
       },
       {
         name: "smoke_or_vape",
