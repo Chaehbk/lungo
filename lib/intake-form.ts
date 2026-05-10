@@ -130,7 +130,7 @@ export const intakeQuestionSections: IntakeQuestionSection[] = [
         label: "Do you smoke or vape?",
         type: "select",
         required: true,
-        options: ["No", "Yes, outside only", "Yes", "Prefer to discuss"],
+        options: ["No", "Yes", "Occasionally"],
       },
       {
         name: "pets_or_animals",
