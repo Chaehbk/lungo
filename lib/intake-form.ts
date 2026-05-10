@@ -1,0 +1,161 @@
+import type { IntakeQuestionSection } from "./types";
+
+export const intakeQuestionSections: IntakeQuestionSection[] = [
+  {
+    id: "contact",
+    title: "Contact information",
+    description: "Used by the landlord to follow up manually after reviewing your intake.",
+    columns: 2,
+    questions: [
+      {
+        name: "full_name",
+        label: "Full name",
+        type: "text",
+        required: true,
+        placeholder: "Your name",
+      },
+      {
+        name: "email",
+        label: "Email",
+        type: "email",
+        required: true,
+        placeholder: "you@example.com",
+      },
+      {
+        name: "phone",
+        label: "Phone",
+        type: "tel",
+        placeholder: "Optional",
+      },
+      {
+        name: "preferred_move_in_date",
+        label: "Preferred move-in date",
+        type: "date",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "room-fit",
+    title: "Room and lease fit",
+    description: "These answers help compare timing and room setup against the configured criteria.",
+    columns: 2,
+    questions: [
+      {
+        name: "desired_lease_length",
+        label: "Desired lease length",
+        type: "select",
+        required: true,
+        options: ["3–6 months", "6–12 months", "12+ months", "Flexible / not sure yet"],
+      },
+      {
+        name: "occupancy_confirmation",
+        label: "Occupancy confirmation",
+        type: "select",
+        required: true,
+        options: ["One occupant", "More than one occupant", "Need to clarify"],
+      },
+      {
+        name: "occupation_or_field_of_study",
+        label: "Occupation or field of study",
+        type: "text",
+        required: true,
+        placeholder: "e.g. designer, student, healthcare",
+      },
+      {
+        name: "work_study_arrangement",
+        label: "Work/study arrangement",
+        type: "select",
+        required: true,
+        options: ["Mostly out of the home", "Hybrid", "Mostly from home", "Varies / other"],
+      },
+    ],
+  },
+  {
+    id: "home-routine",
+    title: "Home routine and shared spaces",
+    description: "Open-ended context for manual landlord review before a showing.",
+    questions: [
+      {
+        name: "typical_home_routine",
+        label: "Typical home routine",
+        type: "textarea",
+        required: true,
+        rows: 3,
+        placeholder: "Share your usual weekday/weekend rhythm.",
+      },
+      {
+        name: "cleanliness_habits",
+        label: "Cleanliness habits",
+        type: "textarea",
+        required: true,
+        rows: 3,
+        placeholder: "How do you usually handle shared spaces?",
+      },
+    ],
+  },
+  {
+    id: "screening-basics",
+    title: "Screening basics",
+    description: "These are configurable screening questions, not automated approval rules.",
+    columns: 2,
+    questions: [
+      {
+        name: "income_or_financial_support_range",
+        label: "Income or financial support range",
+        type: "select",
+        required: true,
+        hint: "This asks about verifiable ability to pay, not the source of lawful income.",
+        options: ["3x+ monthly rent", "2.5x–3x monthly rent", "Below 2.5x monthly rent", "Verifiable financial support", "Prefer to discuss"],
+      },
+      {
+        name: "self_reported_credit_range",
+        label: "Self-reported credit range",
+        type: "select",
+        required: true,
+        options: ["720+", "680–719", "640–679", "Below 640", "Limited or no U.S. credit history", "Prefer to discuss"],
+      },
+      {
+        name: "smoke_or_vape",
+        label: "Do you smoke or vape?",
+        type: "select",
+        required: true,
+        options: ["No", "Yes, outside only", "Yes", "Prefer to discuss"],
+      },
+      {
+        name: "pets_or_animals",
+        label: "Pets or animals",
+        type: "select",
+        required: true,
+        options: ["No pets", "Have a pet or animal", "Prefer to discuss"],
+      },
+    ],
+  },
+  {
+    id: "next-steps",
+    title: "Next steps",
+    description: "Lungo keeps this intake form-first so the landlord can follow up consistently.",
+    questions: [
+      {
+        name: "self_intro",
+        label: "Short self-introduction",
+        type: "textarea",
+        required: true,
+        rows: 4,
+        placeholder: "A few sentences about what you are looking for in a shared home.",
+      },
+      {
+        name: "open_to_application",
+        label: "Are you open to a configurable application step after mutual fit?",
+        type: "select",
+        required: true,
+        options: ["Yes", "Maybe — I have questions first", "No"],
+      },
+      {
+        name: "nearby_room_options_opt_in",
+        label: "I am open to hearing about nearby room options if this room is not the right fit.",
+        type: "checkbox",
+      },
+    ],
+  },
+];
