@@ -1,0 +1,127 @@
+import type { Candidate, RoomProfile, ScreeningCriteria } from "./types";
+
+export const demoRoom: RoomProfile = {
+  id: "room-demo-irvine",
+  title: "Private room in a quiet shared home",
+  locationLabel: "Great Park, Irvine, CA",
+  availableMoveInDate: "2026-06-01",
+  rent: 1450,
+  utilitiesFee: 100,
+  parking: "Street parking and community parking may be available; confirm during screening.",
+  otherFees: [
+    {
+      label: "Cleaning contribution",
+      amount: 50,
+      frequency: "monthly",
+      description: "Shared contribution for common-area upkeep.",
+    },
+  ],
+  hasPrivateRoom: true,
+  hasPrivateBathroom: false,
+  isFurnished: true,
+  petsAllowed: false,
+  smokingAllowed: false,
+  isOwnerOccupied: true,
+  homeEnvironmentDescription:
+    "A calm, owner-occupied shared home with light shared-space use and an expectation of considerate communication.",
+};
+
+export const demoCriteria: ScreeningCriteria = {
+  id: "criteria-demo-irvine",
+  roomId: demoRoom.id,
+  requiredOccupancy: "One occupant for the listed room setup",
+  preferredMoveInTimeline: "Around the listed availability date, with some flexibility",
+  preferredLeaseLength: "6–12 months",
+  financialQualificationRange: "Income or verifiable support around 2.5x–3x monthly rent",
+  selfReportedCreditRange: "Good credit preferred, or context for limited/no U.S. credit history",
+  smokingPolicy: "No smoking or vaping in the home",
+  petPolicy: "No pets for this room profile",
+  applicationProvider: "Configurable third-party application provider",
+  applicationRequired: true,
+  lifestyleFitPriorities: [
+    "Respectful shared-space use",
+    "Comfort with a quiet home environment",
+    "Clear communication before showings",
+  ],
+  sharedSpaceExpectations: "Kitchen, laundry, and common areas should be used considerately and cleaned after use.",
+  quietHomeExpectations: "Lower-noise routines are preferred, especially on weeknights.",
+};
+
+export const candidates: Candidate[] = [
+  {
+    id: "cand-001",
+    roomId: demoRoom.id,
+    fullName: "Maya Chen",
+    email: "maya@example.com",
+    phone: "(949) 555-0142",
+    preferredMoveInDate: "2026-06-08",
+    desiredLeaseLength: "12 months",
+    occupancyConfirmation: "One occupant",
+    occupationOrFieldOfStudy: "Product designer",
+    workStudyArrangement: "Hybrid schedule, usually out of the home three weekdays",
+    typicalHomeRoutine: "Quiet evenings, light cooking, occasional weekend errands",
+    cleanlinessHabits: "Cleans after cooking and prefers a weekly shared chore rhythm",
+    incomeOrFinancialSupportRange: "3x+ monthly rent with employment documentation",
+    selfReportedCreditRange: "720+",
+    smokeOrVape: "No",
+    petsOrAnimals: "No pets",
+    selfIntro:
+      "I am looking for a calm, well-kept shared home and prefer a respectful household where people communicate about shared spaces.",
+    openToApplication: "Yes, after confirming mutual fit and viewing the room",
+    nearbyRoomOptionsOptIn: true,
+    status: "Strong potential fit",
+    createdAt: "2026-05-02T16:30:00Z",
+  },
+  {
+    id: "cand-002",
+    roomId: demoRoom.id,
+    fullName: "Jordan Rivera",
+    email: "jordan@example.com",
+    phone: "(714) 555-0198",
+    preferredMoveInDate: "2026-07-01",
+    desiredLeaseLength: "6 months",
+    occupancyConfirmation: "One occupant",
+    occupationOrFieldOfStudy: "Graduate student",
+    workStudyArrangement: "Mostly on campus with some study time at home",
+    typicalHomeRoutine: "Studies at night and cooks a few times per week",
+    cleanlinessHabits: "Comfortable with house rules and shared cleaning expectations",
+    incomeOrFinancialSupportRange: "Financial support and stipend documentation available",
+    selfReportedCreditRange: "Limited U.S. credit history",
+    smokeOrVape: "No",
+    petsOrAnimals: "No pets",
+    selfIntro:
+      "I am relocating for school and want a peaceful home base with clear expectations before move-in.",
+    openToApplication: "Yes, I can complete the application step if the showing goes well",
+    nearbyRoomOptionsOptIn: false,
+    status: "Possible fit — follow-up needed",
+    createdAt: "2026-05-04T10:15:00Z",
+  },
+  {
+    id: "cand-003",
+    roomId: demoRoom.id,
+    fullName: "Sam Patel",
+    email: "sam@example.com",
+    phone: "(657) 555-0177",
+    preferredMoveInDate: "2026-05-20",
+    desiredLeaseLength: "Month to month",
+    occupancyConfirmation: "One occupant, but occasional overnight guest may visit",
+    occupationOrFieldOfStudy: "Software contractor",
+    workStudyArrangement: "Works from home most days with video calls",
+    typicalHomeRoutine: "Late work blocks and frequent calls during the day",
+    cleanlinessHabits: "Generally tidy; would like to understand cleaning schedule",
+    incomeOrFinancialSupportRange: "Varies by contract; can provide bank statements",
+    selfReportedCreditRange: "680–719",
+    smokeOrVape: "No smoking; occasional vaping outside",
+    petsOrAnimals: "No pets",
+    selfIntro:
+      "I need a flexible short-term room while I decide where to live longer term in Orange County.",
+    openToApplication: "Maybe; would like to discuss fees first",
+    nearbyRoomOptionsOptIn: true,
+    status: "Low priority",
+    createdAt: "2026-05-05T22:05:00Z",
+  },
+];
+
+export function getCandidateById(id: string) {
+  return candidates.find((candidate) => candidate.id === id);
+}
