@@ -20,7 +20,7 @@ The MVP should:
 
 The current Irvine shared-housing form is the first reference use case, not the product itself.
 
-Lungo should be built as a reusable screening workflow for owner-occupied or small-scale shared housing. Room details, household preferences, screening criteria, application provider, availability, rent, and house rules must be configurable.
+Lungo should be built as a reusable screening workflow for owner-occupied or small-scale shared housing. Room details, household preferences, screening criteria, application provider, availability, rent, fees, parking, and house rules must be configurable.
 
 Do not hard-code:
 
@@ -29,6 +29,7 @@ Do not hard-code:
 - current housemate gender or identity
 - 1st-floor / 3rd-floor layout
 - Zillow as the only possible application provider
+- single occupancy as the universal rule
 - any single landlord’s personal screening preferences
 
 The app should support this first use case while remaining reusable for other rooms and homeowners.
@@ -51,40 +52,6 @@ Why form-first:
 3. Candidate response is saved as structured data.
 4. AI generates an explainable fit summary and suggested follow-up questions.
 5. Homeowner manually decides who to invite to a showing.
-
-## Configurable room profile fields
-
-The app should support configurable room fields such as:
-
-- Room title
-- Location label
-- Available move-in date
-- Rent
-- Utilities
-- Cleaning fee
-- Private room? yes/no
-- Private bathroom? yes/no
-- Furnished? yes/no
-- Pets allowed? yes/no
-- Smoking allowed? yes/no
-- Owner-occupied home? yes/no
-- Home environment description
-
-Suggested internal field names:
-
-- `title`
-- `location_label`
-- `available_move_in_date`
-- `rent`
-- `utilities_fee`
-- `cleaning_fee`
-- `has_private_room`
-- `has_private_bathroom`
-- `is_furnished`
-- `pets_allowed`
-- `smoking_allowed`
-- `is_owner_occupied`
-- `home_environment_description`
 
 ## Configurable room profile fields
 
@@ -123,7 +90,39 @@ Suggested internal field names:
 - `smoking_allowed`
 - `is_owner_occupied`
 - `home_environment_description`
-  
+
+## Configurable screening criteria
+
+The app should support configurable screening criteria such as:
+
+- Required occupancy
+- Preferred move-in timeline
+- Preferred lease length
+- Financial qualification range
+- Self-reported credit range
+- Smoking policy
+- Pet policy
+- Application provider
+- Application readiness
+- Lifestyle fit priorities
+- Shared-space expectations
+- Quiet-home expectations
+
+Suggested internal field names:
+
+- `required_occupancy`
+- `preferred_move_in_timeline`
+- `preferred_lease_length`
+- `financial_qualification_range`
+- `self_reported_credit_range`
+- `smoking_policy`
+- `pet_policy`
+- `application_provider`
+- `application_required`
+- `lifestyle_fit_priorities`
+- `shared_space_expectations`
+- `quiet_home_expectations`
+
 ## First build target
 
 - Next.js + TypeScript app
