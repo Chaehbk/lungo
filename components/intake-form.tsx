@@ -1,3 +1,5 @@
+"use client";
+
 import { Field, inputClass } from "@/components/ui";
 import type { IntakeQuestion, IntakeQuestionSection } from "@/lib/types";
 
@@ -49,9 +51,36 @@ function QuestionInput({ question }: { question: IntakeQuestion }) {
   );
 }
 
-export function IntakeForm({ sections }: { sections: IntakeQuestionSection[] }) {
+export function IntakeForm({
+  sections,
+  onSubmit,
+}: {
+  sections: IntakeQuestionSection[];
+  onSubmit?: (values: Record<string, string | boolean>) => void;
+}) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const values: Record<string, string | boolean> = {};
+    for (const section of sections) {
+      for (const question of section.questions) {
+        if (question.type === "checkbox") {
+          values[question.name] = fd.has(question.name);
+        } else {
+          values[question.name] = (fd.get(question.name) ?? "") as string;
+        }
+      }
+    }
+    onSubmit?.(values);
+  }
+
   return (
-    <form action="/intake/thank-you" method="get" className="space-y-8">
+    <form
+      onSubmit={onSubmit ? handleSubmit : undefined}
+      action={onSubmit ? undefined : "/intake/thank-you"}
+      method={onSubmit ? undefined : "get"}
+      className="space-y-8"
+    >
       {sections.map((section) => (
         <section key={section.id}>
           <h2 className="text-xl font-semibold">{section.title}</h2>

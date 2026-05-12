@@ -1,9 +1,14 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { IntakeForm } from "@/components/intake-form";
 import { Card, PageShell } from "@/components/ui";
 import { intakeQuestionSections } from "@/lib/intake-form";
+import { saveLocalCandidate } from "@/lib/local-candidates";
 import { demoCriteria, demoRoom } from "@/lib/mock-data";
+import type { Candidate } from "@/lib/types";
 
-const roomFacts = [
+const roomFacts: [string, string][] = [
   ["Available", demoRoom.availableMoveInDate],
   ["Rent", `$${demoRoom.rent}/mo`],
   ["Utilities", `$${demoRoom.utilitiesFee}/mo`],
@@ -13,6 +18,37 @@ const roomFacts = [
 ];
 
 export default function IntakePage() {
+  const router = useRouter();
+
+  function handleSubmit(values: Record<string, string | boolean>) {
+    const candidate: Candidate = {
+      id: `local-${Date.now()}`,
+      roomId: demoRoom.id,
+      fullName: values.full_name as string,
+      email: values.email as string,
+      phone: values.phone as string,
+      preferredMoveInDate: values.preferred_move_in_date as string,
+      desiredLeaseLength: values.desired_lease_length as string,
+      occupancyConfirmation: values.occupancy_confirmation as string,
+      occupationOrFieldOfStudy: values.occupation_or_field_of_study as string,
+      workStudyArrangement: values.work_study_arrangement as string,
+      typicalHomeRoutine: values.typical_home_routine as string,
+      cleanlinessHabits: values.cleanliness_habits as string,
+      incomeOrFinancialSupportRange: values.income_or_financial_support_range as string,
+      selfReportedCreditRange: values.self_reported_credit_range as string,
+      smokeOrVape: values.smoke_or_vape as string,
+      petsOrAnimals: values.pets_or_animals as string,
+      selfIntro: values.self_intro as string,
+      openToApplication: values.open_to_application as string,
+      nearbyRoomOptionsOptIn: values.nearby_room_options_opt_in as boolean,
+      status: "New",
+      createdAt: new Date().toISOString(),
+    };
+
+    saveLocalCandidate(candidate);
+    router.push("/intake/thank-you");
+  }
+
   return (
     <PageShell
       eyebrow="Public intake"
@@ -49,13 +85,13 @@ export default function IntakePage() {
           <Card>
             <h2 className="text-lg font-semibold">Why this form asks these questions</h2>
             <p className="mt-3 text-sm leading-6 text-moss">
-              Lungo uses a consistent question set so every prospect can provide the same baseline information. This phase does not save submissions, run AI, or make rental decisions.
+              Lungo uses a consistent question set so every prospect can provide the same baseline information. This phase saves submissions to your browser&apos;s local storage only.
             </p>
           </Card>
         </aside>
 
         <Card>
-          <IntakeForm sections={intakeQuestionSections} />
+          <IntakeForm sections={intakeQuestionSections} onSubmit={handleSubmit} />
         </Card>
       </div>
     </PageShell>
